@@ -3,6 +3,8 @@ import "./Styles/Signup.css"
 import OtherOptions from "./OtherOptions"
 import { imageSrc } from "../../data"
 import AuthToggle from "./AuthToggle"
+import viteLogo from "/vite.svg"
+
 const Signup = () => {
   const [userInput, setUserInput] = useState({
     firstname: "",
@@ -26,9 +28,14 @@ const Signup = () => {
           laptop:h-auto laptop:w-auto laptop:bg-opacity-0 laptop:relative"
     >
       <div className="flex flex-col items-center justify-center w-[400px] mt-28 laptop:hidden laptop:absolute laptop:top-0 z-50">
-        <h1 className="text-subHeadingText font-bold font-bodyFont text-primary">
+        <img
+          src={viteLogo}
+          alt=""
+          className="w-[180px]"
+        />
+        {/* <h1 className="text-subHeadingText font-bold font-bodyFont text-primary">
           Router
-        </h1>
+        </h1> */}
         <span
           className="text-primary text-[10px] mt-3 font-medium font-bodyFont 
                   tracking-wider text-center"

@@ -34,9 +34,9 @@ const Login = () => {
           alt=""
           className="w-[180px]"
         />
-        <h1 className="text-subHeadingText font-bold font-bodyFont text-primary">
+        {/* <h1 className="text-subHeadingText font-bold font-bodyFont text-primary">
           Router
-        </h1>
+        </h1> */}
         <span
           className="text-primary text-[10px] mt-3 font-medium font-bodyFont 
                   tracking-wider text-center"
