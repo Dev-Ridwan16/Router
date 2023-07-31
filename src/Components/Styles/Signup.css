@@ -1,0 +1,11 @@
+.form_child_container {
+    @apply flex flex-col mb-2
+}
+
+.form_child_container label {
+    @apply text-primary font-bodyFont text-bodyText laptop:text-dark
+}
+
+.form_child_container input {
+    @apply w-[300px] h-8 border outline-none mt-2 bg-transparent p-3 text-bodyText
+}
