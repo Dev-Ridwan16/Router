@@ -31,7 +31,7 @@ const Signup = () => {
     event.preventDefault()
 
     axios
-      .post("http://localhost:5000/user-details", userInput)
+      .post("https://router-backend.onrender.com/user-details", userInput)
       .then((res) => {
         console.log(res.data)
       })
