@@ -38,7 +38,7 @@ const Login = () => {
           Router
         </h1> */}
         <span
-          className="text-primary text-[10px] mt-2 font-medium font-bodyFont 
+          className="w-[300px] text-primary text-[10px] mt-2 font-medium font-bodyFont 
                   tracking-wider text-center"
         >
           {imageSrc.text}
