@@ -4,30 +4,48 @@ import OtherOptions from "./OtherOptions"
 import { imageSrc } from "../../data"
 import AuthToggle from "./AuthToggle"
 import viteLogo from "/vite.svg"
+import axios from "axios"
 
 const Signup = () => {
   const [userInput, setUserInput] = useState({
     firstname: "",
     lastname: "",
     email: "",
-    password1: "",
+    password: "",
   })
   const [isToggle, setIsToggle] = useState(false)
 
   const changeHandler = (event) => {
-    setUserInput(event.target)
+    const { name, value } = event.target
+    setUserInput((prevUserInput) => ({
+      ...prevUserInput,
+      [name]: value,
+    }))
   }
 
   const handleToggle = () => {
     setIsToggle(!isToggle)
   }
 
+  const handleSubmit = (event) => {
+    event.preventDefault()
+
+    axios
+      .post("http://localhost:5000/user-details", userInput)
+      .then((res) => {
+        console.log(res.data)
+      })
+      .catch((err) => {
+        console.error(err)
+      })
+  }
+
   return (
     <div
-      className="absolute bg-tertiary bg-opacity-50 w-screen h-screen 
+      className="absolute bg-tertiary bg-opacity-30 w-screen h-screen 
           laptop:h-auto laptop:w-auto laptop:bg-opacity-0 laptop:relative"
     >
-      <div className="flex flex-col items-center justify-center w-[400px] mt-28 laptop:hidden laptop:absolute laptop:top-0 z-50">
+      <div className="flex flex-col items-center justify-center w-[400px] mt-20 laptop:hidden laptop:absolute laptop:top-0 z-50">
         <img
           src={viteLogo}
           alt=""
@@ -37,7 +55,7 @@ const Signup = () => {
           Router
         </h1> */}
         <span
-          className="text-primary text-[10px] mt-3 font-medium font-bodyFont 
+          className="w-[300px] text-primary text-[10px] mt-3 font-medium font-bodyFont 
                   tracking-wider text-center"
         >
           {imageSrc.text}
@@ -45,16 +63,20 @@ const Signup = () => {
       </div>
       <h1
         className="text-primary text-subHeadingText font-medium font-headingFont 
-             mt-20 laptop:mt-0 laptop:text-tertiary text-center "
+             mt-10 laptop:mt-0 laptop:text-tertiary text-center "
       >
         Create account
       </h1>
       <OtherOptions />
-      <form className="w-[400px] flex flex-col items-center justify-center mx-auto mt-5 rounded-lg ">
+      <form
+        className="w-[400px] flex flex-col items-center justify-center mx-auto mt-5 rounded-lg "
+        onSubmit={handleSubmit}
+      >
         <div className="form_child_container">
           <label htmlFor="firstname">Firstname</label>
           <input
             type="text"
+            name="firstname"
             value={userInput.firstname}
             onChange={changeHandler}
           />
@@ -63,7 +85,8 @@ const Signup = () => {
           <label htmlFor="firstname">Lastname</label>
           <input
             type="text"
-            value={userInput.firstname}
+            name="lastname"
+            value={userInput.lastname}
             onChange={changeHandler}
           />
         </div>
@@ -71,7 +94,8 @@ const Signup = () => {
           <label htmlFor="firstname">Email</label>
           <input
             type="email"
-            value={userInput.firstname}
+            name="email"
+            value={userInput.email}
             onChange={changeHandler}
           />
         </div>
@@ -79,23 +103,25 @@ const Signup = () => {
           <label htmlFor="firstname">Password</label>
           <input
             type="password"
-            value={userInput.firstname}
+            name="password"
+            value={userInput.password}
             onChange={changeHandler}
           />
         </div>
-      </form>
-      <AuthToggle
-        isToggle={isToggle}
-        handleToggle={handleToggle}
-      />
-      <div className="w-[200px] mx-auto mt-5">
-        <button
-          className="bg-primary text-tertiary laptop:bg-tertiary h-[30px] w-[200px] rounded 
+        <AuthToggle
+          isToggle={isToggle}
+          handleToggle={handleToggle}
+        />
+        <div className="w-[200px] mx-auto mt-5">
+          <button
+            type="submit"
+            className="bg-primary text-tertiary laptop:bg-tertiary h-[30px] w-[200px] rounded 
                   laptop:text-primary font-regular"
-        >
-          Sign up
-        </button>
-      </div>
+          >
+            Sign up
+          </button>
+        </div>
+      </form>
     </div>
   )
 }

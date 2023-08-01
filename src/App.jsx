@@ -3,6 +3,9 @@ import "./App.css"
 import Userjoin from "./Components/Userjoin"
 import Welcome from "./Components/Welcome"
 import { Route, Routes } from "react-router-dom"
+import axios from "axios"
+
+// axios.defaults.baseURL = "http://localhost:5000"
 
 function App() {
   return (
