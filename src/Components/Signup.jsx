@@ -45,7 +45,7 @@ const Signup = () => {
       className="absolute bg-tertiary bg-opacity-30 w-screen h-screen 
           laptop:h-auto laptop:w-auto laptop:bg-opacity-0 laptop:relative"
     >
-      <div className="flex flex-col items-center justify-center w-[400px] mt-10 laptop:hidden laptop:absolute laptop:top-0 z-50">
+      <div className="flex flex-col items-center justify-center w-[400px] mt-7 laptop:hidden laptop:absolute laptop:top-0 z-50">
         <img
           src={viteLogo}
           alt=""
