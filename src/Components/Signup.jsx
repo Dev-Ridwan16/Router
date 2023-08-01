@@ -63,7 +63,7 @@ const Signup = () => {
       </div>
       <h1
         className="text-primary text-subHeadingText font-medium font-headingFont 
-             mt-10 laptop:mt-0 laptop:text-tertiary text-center "
+             mt-5 laptop:mt-0 laptop:text-tertiary text-center "
       >
         Create account
       </h1>

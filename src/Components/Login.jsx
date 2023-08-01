@@ -28,7 +28,7 @@ const Login = () => {
       className="absolute bg-tertiary bg-opacity-50 w-screen h-screen 
           laptop:h-auto laptop:w-auto laptop:bg-opacity-0 laptop:relative"
     >
-      <div className="flex flex-col items-center justify-center w-[400px] mt-28 laptop:hidden laptop:absolute laptop:top-0 z-50">
+      <div className="flex flex-col items-center justify-center w-[400px] mt-10 laptop:hidden laptop:absolute laptop:top-0 z-50">
         <img
           src={viteLogo}
           alt=""
@@ -38,7 +38,7 @@ const Login = () => {
           Router
         </h1> */}
         <span
-          className="text-primary text-[10px] mt-3 font-medium font-bodyFont 
+          className="text-primary text-[10px] mt-2 font-medium font-bodyFont 
                   tracking-wider text-center"
         >
           {imageSrc.text}
@@ -46,7 +46,7 @@ const Login = () => {
       </div>
       <h1
         className="text-primary text-subHeadingText font-medium font-headingFont 
-             mt-20 laptop:text-tertiary text-center "
+             mt-10 laptop:text-tertiary text-center "
       >
         Login your account
       </h1>
