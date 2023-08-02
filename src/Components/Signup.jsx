@@ -34,6 +34,7 @@ const Signup = () => {
       .post("https://router-backend.onrender.com/user-details", userInput)
       .then((res) => {
         console.log(res.data)
+        setUserInput(userInput)
       })
       .catch((err) => {
         console.error(err)

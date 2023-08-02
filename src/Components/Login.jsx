@@ -4,6 +4,7 @@ import OtherOptions from "./OtherOptions"
 import { imageSrc } from "../../data"
 import viteLogo from "/vite.svg"
 import AuthToggle from "./AuthToggle"
+import axios from "axios"
 
 const Login = () => {
   const [userInput, setUserInput] = useState({
@@ -22,6 +23,23 @@ const Login = () => {
       ...prevUserInput,
       [name]: value,
     }))
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
+
+    axios
+      .post("https://router-backend.onrender.com/user-details/login", userInput)
+      .then((res) => {
+        const token = res.data.token
+
+        localStorage.setItem("token", token)
+
+        window.location.href = "/"
+      })
+      .catch((err) => {
+        console.error("Login faild:", err.response.data.message)
+      })
   }
   return (
     <div
@@ -51,7 +69,10 @@ const Login = () => {
         Login your account
       </h1>
       <OtherOptions />
-      <form className="w-[400px] flex flex-col items-center justify-center mx-auto mt-5 rounded-lg ">
+      <form
+        onSubmit={handleSubmit}
+        className="w-[400px] flex flex-col items-center justify-center mx-auto mt-5 rounded-lg "
+      >
         <div className="form_child_container">
           <label htmlFor="firstname">Email</label>
           <input
@@ -70,19 +91,20 @@ const Login = () => {
             onChange={changeHandler}
           />
         </div>
-      </form>
-      <AuthToggle
-        isToggle={isToggle}
-        handleToggle={handleToggle}
-      />
-      <div className="w-[200px] mx-auto mt-5">
-        <button
-          className="bg-primary text-tertiary laptop:bg-tertiary h-[30px] w-[200px] rounded 
+        <AuthToggle
+          isToggle={isToggle}
+          handleToggle={handleToggle}
+        />
+        <div className="w-[200px] mx-auto mt-5">
+          <button
+            type="submit"
+            className="bg-primary text-tertiary laptop:bg-tertiary h-[30px] w-[200px] rounded 
                   laptop:text-primary font-regular"
-        >
-          Log in
-        </button>
-      </div>
+          >
+            Log in
+          </button>
+        </div>
+      </form>
     </div>
   )
 }
