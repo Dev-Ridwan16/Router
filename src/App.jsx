@@ -3,9 +3,8 @@ import "./App.css"
 import Userjoin from "./Components/Userjoin"
 import Welcome from "./Components/Welcome"
 import { Route, Routes } from "react-router-dom"
-import axios from "axios"
-
-// axios.defaults.baseURL = "http://localhost:5000"
+import Home from "./Components/Home"
+import { imageSrc } from "../data"
 
 function App() {
   return (
@@ -13,23 +12,33 @@ function App() {
       <Routes>
         <Route
           path="/"
-          element={<Welcome />}
+          element={
+            <Welcome
+              imageSrc={imageSrc.image1}
+              imageSrc2={imageSrc.image2}
+              text={imageSrc.text}
+            />
+          }
         />
         <Route
           path="/signup"
           element={
-            <div className=" flex laptop:bg-tertiary h-screen laptop:bg-opacity-30 items-center justify-center">
+            <div className=" flex h-screen items-center justify-center">
               <Userjoin />
             </div>
           }
         />
         <Route
-          path="/login" // Add this route for "/login" path
+          path="/login"
           element={
-            <div className=" flex laptop:bg-tertiary h-screen laptop:bg-opacity-30 items-center justify-center">
+            <div className=" flex items-center justify-center">
               <Userjoin />
             </div>
           }
+        />
+        <Route
+          path="/home"
+          element={<Home />}
         />
       </Routes>
     </>

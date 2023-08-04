@@ -5,6 +5,7 @@ import { imageSrc } from "../../data"
 import viteLogo from "/vite.svg"
 import AuthToggle from "./AuthToggle"
 import axios from "axios"
+import { Link } from "react-router-dom"
 
 const Login = () => {
   const [userInput, setUserInput] = useState({
@@ -35,40 +36,23 @@ const Login = () => {
 
         localStorage.setItem("token", token)
 
-        window.location.href = "/"
+        window.location.href = "/home"
       })
       .catch((err) => {
-        console.error("Login faild:", err.response.data.message)
+        console.error("Login faild:", err)
       })
   }
   return (
     <div
-      className="absolute bg-tertiary bg-opacity-50 w-screen h-screen 
-          laptop:h-auto laptop:w-auto laptop:bg-opacity-0 laptop:relative"
+      className="  
+          laptop:h-auto w-auto relative flex flex-col items-center justify-center h-[80vh]"
     >
-      <div className="flex flex-col items-center justify-center w-[400px] mt-10 laptop:hidden laptop:absolute laptop:top-0 z-50">
-        <img
-          src={viteLogo}
-          alt=""
-          className="w-[180px]"
-        />
-        {/* <h1 className="text-subHeadingText font-bold font-bodyFont text-primary">
-          Router
-        </h1> */}
-        <span
-          className="w-[300px] text-primary text-[10px] mt-2 font-medium font-bodyFont 
-                  tracking-wider text-center"
-        >
-          {imageSrc.text}
-        </span>
-      </div>
       <h1
-        className="text-primary text-subHeadingText font-medium font-headingFont 
-             mt-10 laptop:text-tertiary text-center "
+        className=" text-subHeadingText font-medium font-headingFont 
+             mt-10 text-tertiary"
       >
         Login your account
       </h1>
-      <OtherOptions />
       <form
         onSubmit={handleSubmit}
         className="w-[400px] flex flex-col items-center justify-center mx-auto mt-5 rounded-lg "
@@ -83,7 +67,11 @@ const Login = () => {
           />
         </div>
         <div className="form_child_container">
-          <label htmlFor="firstname">Password</label>
+          <div className="flex justify-between items-center">
+            <label htmlFor="password">Password</label>
+            <Link className="text-[10px] text-tertiary">Can't remember</Link>
+          </div>
+
           <input
             type="password"
             name="password1"
@@ -98,12 +86,13 @@ const Login = () => {
         <div className="w-[200px] mx-auto mt-5">
           <button
             type="submit"
-            className="bg-primary text-tertiary laptop:bg-tertiary h-[30px] w-[200px] rounded 
-                  laptop:text-primary font-regular"
+            className="bg-tertiary h-[30px] w-[200px] rounded 
+                  text-primary font-regular"
           >
             Log in
           </button>
         </div>
+        <OtherOptions />
       </form>
     </div>
   )

@@ -27,11 +27,15 @@ export default {
       },
       colors: {
         primary: "#ffffff",
-        secondary: "",
+        secondary: "#00172e",
         tertiary: "#007BFF",
         dark: "#000000",
         grey: "#778899",
       },
+    },
+    animation: {
+      "slide-in": "slideIn 3s ease-out forwards",
+      "slide-out": "slideOut 0.3s ease-out forwards",
     },
   },
   plugins: [],

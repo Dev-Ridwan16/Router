@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 
 const AuthToggle = ({ isToggle, handleToggle }) => {
   return (
-    <div className="text-bodyText text-primary laptop:text-dark flex gap-5 w-[300px] mx-auto">
+    <div className="text-bodyText text-dark flex gap-5 w-[300px] mx-auto">
       <span>
         {!isToggle ? "Already have an account?" : "Don't have an account yet?"}
       </span>
